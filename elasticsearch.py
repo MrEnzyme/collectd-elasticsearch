@@ -225,7 +225,7 @@ def dispatch_stat(result, name, key):
     log_verbose('Sending value[%s]: %s=%s' % (estype, name, value))
 
     val = collectd.Values(plugin='elasticsearch')
-    val.plugin_instance = ES_CLUSTER
+    val.plugin_instance = ES_CLUSTER.encode('ascii', 'ignore')
     val.type = estype
     val.type_instance = name
     val.values = [value]
